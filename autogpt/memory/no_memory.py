@@ -1,16 +1,9 @@
-"""A class that does not store any data. This is the default memory provider."""
-from __future__ import annotations
-
-from typing import Any
+from typing import Optional, List, Any
 
 from autogpt.memory.base import MemoryProviderSingleton
 
 
 class NoMemory(MemoryProviderSingleton):
-    """
-    A class that does not store any data. This is the default memory provider.
-    """
-
     def __init__(self, cfg):
         """
         Initializes the NoMemory provider.
@@ -33,7 +26,7 @@ class NoMemory(MemoryProviderSingleton):
         """
         return ""
 
-    def get(self, data: str) -> list[Any] | None:
+    def get(self, data: str) -> Optional[List[Any]]:
         """
         Gets the data from the memory that is most relevant to the given data.
         NoMemory always returns None.
@@ -53,7 +46,7 @@ class NoMemory(MemoryProviderSingleton):
         """
         return ""
 
-    def get_relevant(self, data: str, num_relevant: int = 5) ->list[Any] | None:
+    def get_relevant(self, data: str, num_relevant: int = 5) -> Optional[List[Any]]:
         """
         Returns all the data in the memory that is relevant to the given data.
         NoMemory always returns None.
